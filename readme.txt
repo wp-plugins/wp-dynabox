@@ -28,7 +28,7 @@ A instalação do plugin é bastante simples.
 
 **Importante!**
 
-Para que o plugin funcione corretamente, é **necessário** que o seu tema tenha uma chamada para função **wp_footer()**. Se você; não sabe como incluir a chamada, veja [aqui](http://www.wpdesigner.com/2007/05/30/where-exactly-should-you-place-wp_footer/ aqui). é necessário também que você; tenha uma conta ativa no [Dynabox](http://afiliados.buscape.com.br/afiliados/Lomadee.do/ "Dynabox").
+Para que o plugin funcione corretamente, é **necessário** que o seu tema tenha uma chamada para função **wp_footer()**. Se você; não sabe como incluir a chamada, veja [aqui](http://www.wpdesigner.com/2007/05/30/where-exactly-should-you-place-wp_footer/ aqui). é necessário também que você; tenha uma conta ativa no [Dynabox](http://afiliados.buscape.com.br/afiliados/Lomadee.do "Dynabox").
 
 == Frequently Asked Questions ==
    FAQ - Perguntas Frequentes
