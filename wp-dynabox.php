@@ -1,7 +1,7 @@
-<?php
+﻿<?php
 /*
 Plugin Name: WP-Dynabox
-Plugin URI: http://celular.ellgrupo.com/blog/wp-dynabox
+Plugin URI: http://celular.ellgrupo.com/blog/wp-dynabox/
 Description: Inclui o código para monetização do sistema Dynabox do programa de afiliados do Buscapé <a href="http://afiliados.buscape.com.br/afiliados/Lomadee.do">Programa de afiliados do Buscapé</a> e permite personalizá-lo sem mexer no tema do blog.
 Author: Blog e-ll.GruPo Celular
 Version: 1.0.0
