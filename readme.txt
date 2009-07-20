@@ -3,7 +3,7 @@ Contributors: Blog e-ll.GruPo Celular
 Donate link: http://celular.ellgrupo.com/blog/wp-dynabox/
 Tags: integration, dynabox, monetização, Brasil
 Requires at least: 2.7
-Tested up to: 2.8
+Tested up to: 2.8.1
 Stable tag: 1.0.0
 
 WP-Dynabox foi desenvolvido para poupar o blogueiro do trabalho de incluir as TAGs do "Dynabox" manualmente, Ferramenta de monitização para site/blogs do programa de afiliados do buscapé, sem falar na personalização.
