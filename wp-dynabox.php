@@ -1,10 +1,10 @@
-﻿<?php
+<?php
 /*
 Plugin Name: WP-Dynabox
 Plugin URI: http://celular.ellgrupo.com/blog/wp-dynabox/
 Description: Inclui o código para monetização do sistema Dynabox do programa de afiliados do Buscapé <a href="http://afiliados.buscape.com.br/afiliados/Lomadee.do">Programa de afiliados do Buscapé</a> e permite personalizá-lo sem mexer no tema do blog.
 Author: Blog e-ll.GruPo Celular
-Version: 1.0.0
+Version: 1.0.1
 Author URI: http://celular.ellgrupo.com/blog/
 */
 global $wpdb;
@@ -12,7 +12,7 @@ global $wpdynabox_options;
 global $domain;
 global $wpdynaboxversion;
 
-$wpdynaboxversion = "1.0.0";
+$wpdynaboxversion = "1.0.1";
 $domain = "wp-dynabox";
 $wpdynabox_options = get_option('wpdynabox_options');
 
@@ -229,9 +229,11 @@ function wpdynabox_footer() {
     switch ($wpdynabox_options['DynaboxS']) {
 
         case "Dynaboxbr":
-            echo "<script type='text/javascript' src='http://vitrine.buscape.com.br/dynabox/DynaboxConfig?div_nome=dynabox&amp;site_origem=".$wpdynabox_options['id'].$Dynaboxcolour."'></script>";
-            //echo $br_before.$p_before.'<div class="wpdynabox_footer">Este blog está utilizando o plugin <a href="http://celular.ellgrupo.com/blog/wp-dynabox/">WP-Dynabox ';
-            //echo $wpdynabox_options['version'].'</a>.</div>'.$p_after.$br_after;
+            echo '<!-- WP-Dynabox for WordPress | http://celular.ellgrupo.com/blog/wp-dynabox/ -->';
+            echo '<script type="text/javascript" src="http://vitrine.buscape.com.br/dynabox/DynaboxConfig?div_nome=dynabox&amp;site_origem='.$wpdynabox_options['id'].$Dynaboxcolour.'"></script>';
+            echo $br_before.$p_before.'<div class="wpdynabox_footer">Este blog está utilizando o plugin <a href="http://celular.ellgrupo.com/blog/wp-dynabox/">WP-Dynabox ';
+            echo $wpdynabox_options['version'].'</a></div>'.$p_after.$br_after;
+            echo '<!-- End of WP-Dynabox code -->';
 
             break;
 
@@ -317,9 +319,6 @@ function wpdynabox_options_page() {
         $wpdynabox_options['show_post'] = $_POST['show_post'];
         $wpdynabox_options['show_com'] = $_POST['show_com'];
         $wpdynabox_options['show_index'] = $_POST['show_index'];
-
-        $wpdynabox_options['username'] = $_POST['username'];
-        $wpdynabox_options['password'] = $_POST['password'];
 
         $wpdynabox_options['uninstall'] = $_POST['uninstall'];
         //atualiza base de dados com informacaoes do formulario
