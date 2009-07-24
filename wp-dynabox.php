@@ -4,7 +4,7 @@ Plugin Name: WP-Dynabox
 Plugin URI: http://celular.ellgrupo.com/blog/wp-dynabox/
 Description: Inclui o código para monetização do sistema Dynabox do programa de afiliados do Buscapé <a href="http://afiliados.buscape.com.br/afiliados/Lomadee.do">Programa de afiliados do Buscapé</a> e permite personalizá-lo sem mexer no tema do blog.
 Author: Blog e-ll.GruPo Celular
-Version: 1.0.1
+Version: 1.0.2
 Author URI: http://celular.ellgrupo.com/blog/
 */
 global $wpdb;
@@ -12,7 +12,7 @@ global $wpdynabox_options;
 global $domain;
 global $wpdynaboxversion;
 
-$wpdynaboxversion = "1.0.1";
+$wpdynaboxversion = "1.0.2";
 $domain = "wp-dynabox";
 $wpdynabox_options = get_option('wpdynabox_options');
 
@@ -26,8 +26,6 @@ add_action('admin_menu', 'wpdynabox_create_meta_box');
 add_action('wp_head', 'wpdynabox_footer_css');
 add_action('wp_footer', 'wpdynabox_footer');
 
-add_action('wpdynabox_cron', 'wpdynabox_relatorio' );
-
 add_action('edit_post', 'wpdynabox_code_exclusionUpdate');
 add_action('publish_post', 'wpdynabox_code_exclusionUpdate');
 add_action('save_post', 'wpdynabox_code_exclusionUpdate');
@@ -35,8 +33,6 @@ add_action('save_post', 'wpdynabox_code_exclusionUpdate');
 add_action('edit_post', 'wpdynabox_custom_colorUpdate');
 add_action('publish_post', 'wpdynabox_custom_colorUpdate');
 add_action('save_post', 'wpdynabox_custom_colorUpdate');
-
-$wpdynabox_options = get_option('wpdynabox_options');
 
 if ($wpdynabox_options['show_post'] == 'checked')
     add_filter('the_content', 'wpdynabox_core');
@@ -80,7 +76,7 @@ function wpdynabox_activate() {
     $wpdynabox_options = get_option('wpdynabox_options');
 
     if ($wpdynabox_options == FALSE) {
-        $wpdynabox_options = array('uninstall'=>'', 'id'=>'', 'colour'=>'', 'footer_align'=>'center', 'footer_line'=>'inline', 'show_com'=>'', 'show_post'=>'checked', 'show_index'=>'', 'clicks'=>'', 'earnings'=>'', 'lastrun'=>'', 'DynaboxS'=>'Dynaboxbr','version'=>$wpdynaboxversion);
+        $wpdynabox_options = array('uninstall'=>'', 'id'=>'', 'colour'=>'', 'show_footer'=>'checked', 'footer_align'=>'center', 'footer_line'=>'inline', 'show_com'=>'', 'show_post'=>'checked', 'show_index'=>'', 'clicks'=>'', 'earnings'=>'', 'lastrun'=>'', 'DynaboxS'=>'Dynaboxbr','version'=>$wpdynaboxversion);
         add_option('wpdynabox_options', $wpdynabox_options);
     } else {
         $wpdynabox_options['version'] = $wpdynaboxversion;
@@ -231,8 +227,10 @@ function wpdynabox_footer() {
         case "Dynaboxbr":
             echo '<!-- WP-Dynabox for WordPress | http://celular.ellgrupo.com/blog/wp-dynabox/ -->';
             echo '<script type="text/javascript" src="http://vitrine.buscape.com.br/dynabox/DynaboxConfig?div_nome=dynabox&amp;site_origem='.$wpdynabox_options['id'].$Dynaboxcolour.'"></script>';
+            if($wpdynabox_options['show_footer'] == 'checked') {
             echo $br_before.$p_before.'<div class="wpdynabox_footer">Este blog está utilizando o plugin <a href="http://celular.ellgrupo.com/blog/wp-dynabox/">WP-Dynabox ';
             echo $wpdynabox_options['version'].'</a></div>'.$p_after.$br_after;
+            }
             echo '<!-- End of WP-Dynabox code -->';
 
             break;
@@ -316,6 +314,7 @@ function wpdynabox_options_page() {
         if (isset($_POST['rgb2']))
             $wpdynabox_options['colour'] = $_POST['rgb2'];
 
+        $wpdynabox_options['show_footer'] = $_POST['show_footer'];
         $wpdynabox_options['show_post'] = $_POST['show_post'];
         $wpdynabox_options['show_com'] = $_POST['show_com'];
         $wpdynabox_options['show_index'] = $_POST['show_index'];
@@ -422,7 +421,9 @@ function wpdynabox_options_page() {
             <tr>
                 <th scope="row" valign="top"><?php _e('Aparência do Rodapé', $domain); ?></th>
                 <td>
-                        <?php _e('Você pode configurar como o rodapé irá aparecer no seu blog.', $domain); ?><br />
+                        <?php _e('Você pode escolher se deseja que os créditos no rodapé seja exibido ou não e pode configurar como os créditos no rodapé iram aparecer.', $domain); ?><br />
+                    <br />
+                    <input type="checkbox" id="show_footer" name="show_footer" value="checked" <?php echo $wpdynabox_options['show_footer']; ?>> <label for="show_footer"><?php _e('Exibir os créditos no rodapé', $domain); ?></label><br />
                     <br />
                         <?php _e('Alinhamento horizontal', $domain); ?>:
                     <input type="radio" id="fac" name="footer_align" value="center" <?php echo $center;?> /> <label for="fac"><?php _e('Centralizado', $domain); ?></label>
