@@ -1,18 +1,18 @@
 <?php
 /*
 Plugin Name: WP-Dynabox
-Plugin URI: http://celular.ellgrupo.com/blog/wp-dynabox/
+Plugin URI: http://oquetananet.com/wordpress/plugins/wp-dynabox/
 Description: Inclui o código para monetização do sistema Dynabox do programa de afiliados do Buscapé <a href="http://afiliados.buscape.com.br/afiliados/Lomadee.do">Programa de afiliados do Buscapé</a> e permite personalizá-lo sem mexer no tema do blog.
-Author: Blog e-ll.GruPo Celular
-Version: 1.0.2
-Author URI: http://celular.ellgrupo.com/blog/
+Author: O quê ta na net
+Version: 1.0.3
+Author URI: http://oquetananet.com/
 */
 global $wpdb;
 global $wpdynabox_options;
 global $domain;
 global $wpdynaboxversion;
 
-$wpdynaboxversion = "1.0.2";
+$wpdynaboxversion = "1.0.3";
 $domain = "wp-dynabox";
 $wpdynabox_options = get_option('wpdynabox_options');
 
@@ -23,6 +23,7 @@ add_action('admin_notices', 'wpdynabox_alerta');
 add_action('admin_head', 'wpdynabox_admin_head');
 add_action('admin_menu', 'wpdynabox_add_pages');
 add_action('admin_menu', 'wpdynabox_create_meta_box');
+
 add_action('wp_head', 'wpdynabox_footer_css');
 add_action('wp_footer', 'wpdynabox_footer');
 
@@ -225,13 +226,13 @@ function wpdynabox_footer() {
     switch ($wpdynabox_options['DynaboxS']) {
 
         case "Dynaboxbr":
-            echo '<!-- WP-Dynabox for WordPress | http://celular.ellgrupo.com/blog/wp-dynabox/ -->';
-            echo '<script type="text/javascript" src="http://vitrine.buscape.com.br/dynabox/DynaboxConfig?div_nome=dynabox&amp;site_origem='.$wpdynabox_options['id'].$Dynaboxcolour.'"></script>';
+            echo '<!-- WP-Dynabox for WordPress | http://oquetananet.com/wordpress/plugins/wp-dynabox/ --><br/>';
+            echo '<script type="text/javascript" src="http://boxes.lomadee.com/bs/config.html?divname=dynabox&amp;c=BR&amp;mdsrc='.$wpdynabox_options['id'].$Dynaboxcolour.'"></script><br/>';
             if($wpdynabox_options['show_footer'] == 'checked') {
-            echo $br_before.$p_before.'<div class="wpdynabox_footer">Este blog está utilizando o plugin <a href="http://celular.ellgrupo.com/blog/wp-dynabox/">WP-Dynabox ';
+            echo $br_before.$p_before.'<div class="wpdynabox_footer">Este blog está utilizando o plugin <a href="http://oquetananet.com/wordpress/plugins/wp-dynabox/">WP-Dynabox ';
             echo $wpdynabox_options['version'].'</a></div>'.$p_after.$br_after;
             }
-            echo '<!-- End of WP-Dynabox code -->';
+            echo '<br/><!-- End of WP-Dynabox code -->';
 
             break;
 
@@ -458,7 +459,7 @@ function wpdynabox_options_page() {
 
         <h2><?php _e('Sobre o WP-Dynabox', $domain); ?> <?php echo $wpdynabox_options['version']; ?></h2>
         <p><?php echo sprintf(__('O sistema <a href="%1$s">Dynabox</a> publica anúncios contextuais dentro de textos de uma grande e qualificada rede de sites parceiros, o que possibilita ao anunciante comunicar-se com seu público-alvo de maneira inovadora, direta e segmentada.', $domain), "http://afiliados.buscape.com.br/afiliados/Dynabox.do"); ?></p>
-        <p><?php echo sprintf(__('Este plugin foi desenvolvido pelo <a href="%1$s">Blog e-ll.GruPo Celular</a> para facilitar a vida do blogueiro que utiliza <a href="%2$s">Wordpress</a>. Com ele os artigos recebem automaticamente os Divs necessários para que o programa funcione no seu blog e também inclui o script no rodapé. Com este plugin você não precisa mais editar o seu tema para que o Dynabox funcione.', $domain), "http://celular.ellgrupo.com/blog/", "http://wordpress.org/"); ?></p>
+        <p><?php echo sprintf(__('Este plugin foi desenvolvido pelo <a href="%1$s">O quê ta na net</a> para facilitar a vida do blogueiro que utiliza <a href="%2$s">Wordpress</a>. Com ele os artigos recebem automaticamente os Divs necessários para que o programa funcione no seu blog e também inclui o script no rodapé. Com este plugin você não precisa mais editar o seu tema para que o Dynabox funcione.', $domain), "http://oquetananet.com/", "http://wordpress.org/"); ?></p>
         <p><?php _e('Algumas perguntas frequêntes:', $domain); ?></p>
         <ul>
             <li><strong><?php _e('Não aparecem anúncios nos meus artigos. Verifiquei o código da página do artigo e os códigos do Dynabox não estão sendo incluídos. O que eu faço?', $domain); ?></strong><br />
@@ -473,7 +474,7 @@ function wpdynabox_options_page() {
         </ul>
 
 
-        <p><?php echo sprintf(__('Acesse regularmente a <a href="%1$s">página do plugin</a> para verificar se novas versões foram liberadas e instruções de como atualizar seu plugin.', $domain), "http://celular.ellgrupo.com/blog/wp-dynabox"); ?></p>
+        <p><?php echo sprintf(__('Acesse regularmente a <a href="%1$s">página do plugin</a> para verificar se novas versões foram liberadas e instruções de como atualizar seu plugin.', $domain), "http://oquetananet.com/wordpress/plugins/wp-dynabox/"); ?></p>
     </form>
     <p><?php _e('O autor deste plugin aceita sua doação para manter este plugin. É uma ótima maneira de você demonstrar seu reconhecimento pelo trabalho realizado!', $domain); ?></p>
     <center>
