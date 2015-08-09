@@ -4,14 +4,14 @@
   Plugin URI: http://oquetananet.com/wordpress/plugins/wp-dynabox/
   Description: Inclui o código para monetização do sistema Dynabox do programa de afiliados do Buscapé <a href="http://afiliados.buscape.com.br/afiliados/Lomadee.do">Programa de afiliados do Buscapé</a> e permite personalizá-lo sem mexer no tema do blog.
   Author: O quê ta na net
-  Version: 1.0.4
+  Version: 1.0.5
   Author URI: http://oquetananet.com/
  */
 global $wpdynabox_options;
 global $domain;
 global $wpdynaboxversion;
 
-$wpdynaboxversion = "1.0.3";
+$wpdynaboxversion = "1.0.5";
 $domain = "wp-dynabox";
 $wpdynabox_options = get_option('wpdynabox_options');
 
@@ -171,10 +171,10 @@ function wpdynabox_core($content) {
     $thePostID = $wp_query->post->ID;
     $EmbedDynaboxTag = get_post_custom_values('wp-dynabox');
 
-    if (!is_single() AND ($wpdynabox_options['show_index'] != 'checked'))
+    if (!is_single() AND ( $wpdynabox_options['show_index'] != 'checked'))
         return ($content);
 
-    if ((!is_feed()) AND (!$EmbedDynaboxTag[0])) {
+    if ((!is_feed()) AND ( !$EmbedDynaboxTag[0])) {
         $content = '<div id="dynabox" class="dynabox">' . $content . '</div>';
     }
     return $content;
@@ -382,7 +382,7 @@ function wpdynabox_options_page() {
                     <th scope="row" valign="top"><?php _e('Código do site de origem ', $domain); ?></th>
                     <td>
                         <label for="id"><?php _e('Código :', $domain); ?></label> <input name="id" type="text" id="id" value="<?php echo $wpdynabox_options['id']; ?>" size=8  /><br />
-    <?php _e('O seu código do site de origem pode ser encontrado na aba ferramentas e depois em Dynabox. <br />O código do site de origem é o número que aparece após o texto \'DynaboxConfig?div_nome=dynabox&amp;site_origem=XXXXXXX\'.', $domain); ?><br />
+                        <?php _e('O seu código do site de origem pode ser encontrado na aba ferramentas e depois em Dynabox. <br />O código do site de origem é o número que aparece após o texto \'DynaboxConfig?div_nome=dynabox&amp;site_origem=XXXXXXX\'.', $domain); ?><br />
                         <input type="radio" id="Dynaboxbr" name="DynaboxS" value="Dynaboxbr" <?php echo $DynaboxSHbr; ?> /> <label for="Dynaboxbr">Dynabox Brasil</label> <small><a href="http://afiliados.buscape.com.br/afiliados/Dynabox.do">(site)</a></small>
                     </td>
                 </tr>
@@ -422,7 +422,7 @@ function wpdynabox_options_page() {
                 <tr>
                     <th scope="row" valign="top"><?php _e('Aparência do Rodapé', $domain); ?></th>
                     <td>
-    <?php _e('Você pode escolher se deseja que os créditos no rodapé seja exibido ou não e pode configurar como os créditos no rodapé iram aparecer.', $domain); ?><br />
+                        <?php _e('Você pode escolher se deseja que os créditos no rodapé seja exibido ou não e pode configurar como os créditos no rodapé iram aparecer.', $domain); ?><br />
                         <br />
                         <input type="checkbox" id="show_footer" name="show_footer" value="checked" <?php echo $wpdynabox_options['show_footer']; ?>> <label for="show_footer"><?php _e('Exibir os créditos no rodapé', $domain); ?></label><br />
                         <br />
@@ -431,7 +431,7 @@ function wpdynabox_options_page() {
                         <input type="radio" id="fal" name="footer_align" value="left" <?php echo $left; ?>/> <label for="fal"><?php _e('Esquerda', $domain); ?></label>
                         <input type="radio" id="far" name="footer_align" value="right" <?php echo $right; ?>/> <label for="far"><?php _e('Direita', $domain); ?></label>
                         <br />
-    <?php _e('Alinhamento vertical', $domain); ?>:
+                        <?php _e('Alinhamento vertical', $domain); ?>:
                         <input type="radio" id="flb" name="footer_line" value="br_before" <?php echo $br_before; ?>/> <label for="flb"><?php _e('Nova linha antes do rodapé', $domain); ?></label>
                         <input type="radio" id="fla" name="footer_line" value="br_after" <?php echo $br_after; ?>/> <label for="fla"><?php _e('Nova linha após o rodapé', $domain); ?></label>
                         <input type="radio" id="flp" name="footer_line" value="p" <?php echo $p; ?>/> <label for="flp"><?php _e('Novo parágrafo', $domain); ?></label>
@@ -465,11 +465,11 @@ function wpdynabox_options_page() {
                 <li><strong><?php _e('Não aparecem anúncios nos meus artigos. Verifiquei o código da página do artigo e os códigos do Dynabox não estão sendo incluídos. O que eu faço?', $domain); ?></strong><br />
                     <?php _e('O problema pode estar no tema do seu blog, garanta que existe a chamada "wp_footer()" no arquivo de tema "Rodapé" (ou footer, caso seu wordpress esteja em inglês) do seu tema ativo.', $domain); ?></li>
                 <li><strong><?php _e('Preciso me cadastrar em algum lugar para usar este plugin?', $domain); ?></strong><br />
-    <?php _e('Sim! é necessário ter uma conta ativa no programa de afiliados do buscapé para usar a ferramenta Dynabox, para que o plugin funcione como esperado.', $domain); ?></li>
+                    <?php _e('Sim! é necessário ter uma conta ativa no programa de afiliados do buscapé para usar a ferramenta Dynabox, para que o plugin funcione como esperado.', $domain); ?></li>
                 <li><strong><?php _e('Posso determinar que não sejam mostrados anúncios do Dynabox em alguns artigos?', $domain); ?></strong><br />
-    <?php _e('Se você quiser que algum artigo não receba anúncios do Dynabox, basta escolher a opção "Não mostrar anúncios do Dynabox neste artigo" na página de edição de artigos.', $domain); ?></li>
+                    <?php _e('Se você quiser que algum artigo não receba anúncios do Dynabox, basta escolher a opção "Não mostrar anúncios do Dynabox neste artigo" na página de edição de artigos.', $domain); ?></li>
                 <li><strong><?php _e('Como posso otimizar meus ganhos com o Dynabox?', $domain); ?></strong><br />
-    <?php echo sprintf(__('O primeiro passo é ter conteúdo relevante. O segundo é personalizar as cores de links do Dynabox para serem mais atraentes para o seu tema. Veja mais <a href="%1$s">aqui</a>.', $domain), "http://ivitrine.buscape.com.br/site/Manual-Dynabox_BR.pdf"); ?></li>
+                    <?php echo sprintf(__('O primeiro passo é ter conteúdo relevante. O segundo é personalizar as cores de links do Dynabox para serem mais atraentes para o seu tema. Veja mais <a href="%1$s">aqui</a>.', $domain), "http://ivitrine.buscape.com.br/site/Manual-Dynabox_BR.pdf"); ?></li>
 
             </ul>
 
@@ -512,7 +512,7 @@ function wpdynabox_code_exclusionUpdate($id) {
         delete_post_meta($id, 'wp-dynabox');
     else
         $meta_exists = update_post_meta($id, 'wp-dynabox', $setting);
-    if ((!$meta_exists) AND ($setting != '')) {
+    if ((!$meta_exists) AND ( $setting != '')) {
         add_post_meta($id, 'wp-dynabox', $setting);
     }
     return $id;
@@ -537,7 +537,7 @@ function wpdynabox_custom_colorUpdate($id) {
         delete_post_meta($id, 'wp-dynabox_custom_color');
     else
         $meta_exists = update_post_meta($id, 'wp-dynabox_custom_color', $setting);
-    if ((!$meta_exists) AND ($setting != '')) {
+    if ((!$meta_exists) AND ( $setting != '')) {
         add_post_meta($id, 'wp-dynabox_custom_color', $setting);
     }
     return $id;
@@ -605,4 +605,3 @@ function wpdynabox_http_post($request, $host, $path, $port = 80) {
     }
     return $response;
 }
-?>
